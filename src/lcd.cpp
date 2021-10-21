@@ -156,4 +156,3 @@ void LCD::init(int num,int cont){
     }
     ThisThread::sleep_for(20);
 }
-
