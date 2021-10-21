@@ -9,7 +9,7 @@ SCL同士，SDA同士を繋ぐ．このとき10kΩ程度の抵抗でプルアッ
 ```c++
 LCD lcd;
 ```
-クラスを定義したのち
+オブジェクトを生成したのち
 ```c++
 lcd.init(int lines,int cont);
 ```
