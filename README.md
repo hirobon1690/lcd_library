@@ -20,7 +20,7 @@ lcd.print(char*,int line);
 表示関数．第1引数は文字列．第2引数は表示する行．デフォルトでは1行目．  
 
 Tips  
-非ASCII文字を使用する際はデータシート上の文字コードをエスケープシーケンスを用いて直接指定する．例えば "ｺﾝﾆﾁﾊ" を表示したいときは
+非ASCII文字を使用する際は[データシート](https://akizukidenshi.com/download/ds/xiamen/AQM1602_rev2.pdf)上の文字コードをエスケープシーケンスを用いて直接指定する．例えば "ｺﾝﾆﾁﾊ" を表示したいときは
 ```c++
 lcd.print("\xBA\xDD\xC6\xC1\xCA");
 ```
