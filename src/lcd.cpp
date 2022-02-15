@@ -111,15 +111,24 @@ void LCD::print(char *c,int line){
     }
 }
 
+void LCD::printf(int line, const char* format, ...) {
+  char buf[32];
+  va_list ap;
+  va_start(ap, format);
+  vsprintf(buf, format, ap);
+  va_end(ap);
+  this->print(buf, line);
+}
+
 void LCD::clr(){
     this->write(CMD,0x01);
-    ThisThread::sleep_for(2);
+    ThisThread::sleep_for(1);
     this->write(CMD,0x02);
-    ThisThread::sleep_for(2);
+    ThisThread::sleep_for(1);
 }
 
 void LCD::init(int num,int cont){
-    ThisThread::sleep_for(20);
+    ThisThread::sleep_for(1);
     if(num==1){
       this->write(CMD,0b00111100);
     }else{
@@ -130,37 +139,37 @@ void LCD::init(int num,int cont){
     }else{
       this->write(CMD,0b00111001); //Function Set
     }
-    ThisThread::sleep_for(20);
+    ThisThread::sleep_for(1);
     if(num==1){
       this->write(CMD,0b00111101);
     }else{
       this->write(CMD,0b00111001); //Function Set
     }
-    ThisThread::sleep_for(20);
+    ThisThread::sleep_for(1);
     this->write(CMD,0x14); //Internal OSC Freq
-    ThisThread::sleep_for(20);
+    ThisThread::sleep_for(1);
     this->write(CMD,0b01110000|(cont&0b001111)); //Contrast Set
-    ThisThread::sleep_for(20);
+    ThisThread::sleep_for(1);
     this->write(CMD,0b01010100|(cont>>4)); //P/I/C Control
-    ThisThread::sleep_for(20);
+    ThisThread::sleep_for(1);
     this->write(CMD,0x6C); //Follower Control
-    ThisThread::sleep_for(20);
+    ThisThread::sleep_for(1);
     if(num==1){
       this->write(CMD,0b00111100);
     }else{
       this->write(CMD,0b00111000); //Function Set
     }
-    ThisThread::sleep_for(20);
+    ThisThread::sleep_for(1);
     this->write(CMD,0x01); //Clear Display
-    ThisThread::sleep_for(20);
+    ThisThread::sleep_for(1);
     this->write(CMD,0x0C); //On/Off Control
-    ThisThread::sleep_for(20);
+    ThisThread::sleep_for(1);
     this->write(CMD,0x40); //Set CGRAM
-    ThisThread::sleep_for(20);
+    ThisThread::sleep_for(1);
     int i;
     for (i = 0; i <= 64 ; i++){
         this->write(DATA,Custom_Char5x8[i]);   //Set CGRAM
-        ThisThread::sleep_for(20);
+        ThisThread::sleep_for(1);
     }
-    ThisThread::sleep_for(20);
+    ThisThread::sleep_for(1);
 }
