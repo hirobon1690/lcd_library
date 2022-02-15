@@ -99,7 +99,7 @@ void LCD::write(int command,int t_data) {
     i2c.write(LCD_ADRS, cmd, 2);
 }
 
-void LCD::print(char *c,int line){
+void LCD::print(const char *c,int line){
     this->write(CMD,0x02);
     if(line==2){
       this->write(CMD,0x40+0x80);
